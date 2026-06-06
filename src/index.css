@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  font-family: "JetBrains Mono", monospace;
+  --nav-height: 72px;
+  --font-mono: "JetBrains Mono", monospace;
+  /* Kita tambahkan dua varian marquee: cepat dan lambat */
+  --animate-marquee: marquee 15s linear infinite;
+  --animate-marquee-slow: marquee-slow 25s linear infinite;
+}
+
+html {
+  overscroll-behavior-y: none;
+  background-color: #dfdfdf;
+}
+
+/* --- KUNCI STACKING SECTION --- */
+/* Agar efek menumpuk lancar, kita pastikan z-index diatur secara dinamis melalui App.jsx atau class manual */
+.stack-section {
+  /* Pada layar lebar kita gunakan efek stacking (sticky fullscreen).
+     Pada layar kecil kita turunkan jadi relative agar konten tidak terpotong. */
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  contain: paint;
+  background-color: #dfdfdf; /* Pastikan tidak transparan */
+  border-bottom: 4px solid black; /* Garis pemisah antar tumpukan */
+}
+
+section {
+  /* Default: sections ambil full viewport pada layar besar untuk efek "stacking".
+     Namun pada perangkat kecil, kita buat relative dan biarkan tinggi mengikuti konten. */
+  min-height: 100vh;
+
+  position: sticky;
+  /* selaraskan dengan tinggi navbar biar tidak perlu klik berkali-kali */
+  top: var(--nav-height, 72px);
+  width: 100%;
+  scroll-margin-top: var(--nav-height, 72px);
+}
+
+/* Layar medium ke bawah: hentikan efek sticky agar tidak terjadi pemotongan konten
+   dan biarkan setiap section mengikuti aliran dokumen. */
+@media (max-width: 1024px) {
+  .stack-section {
+    position: relative;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  section {
+    position: relative;
+    top: auto;
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Kurangi intensitas bayangan dan efek besar untuk performa mobile */
+  * {
+    transition: none !important;
+  }
+}
+
+/* Layar kecil: lebih longgar spacing dan hilangkan overflow dekoratif */
+@media (max-width: 640px) {
+  .stack-section {
+    position: relative;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  section {
+    position: relative;
+    top: auto;
+    padding: 1.25rem;
+  }
+
+  /* Sembunyikan elemen dekoratif yang memakai ukuran tetap dan dapat memecah layout */
+  /* Sembunyikan elemen dekoratif berukuran sangat besar yang sering memecah layout di layar kecil.
+     Kita target class utilitas Tailwind yang biasanya dipakai di komponen (escaped selector diperlukan). */
+  .text-\[12rem\], .w-\[400px\], .h-\[400px\], .\-top-20, .\-bottom-20, .\-left-20, .\-right-20 {
+    display: none !important;
+  }
+}
+
+
+/* Pastikan target scroll tidak ketutup navbar fixed */
+section[id] {
+  scroll-margin-top: var(--nav-height, 72px);
+}
+
+
+/* Efek bayangan lebih tegas untuk gaya Neubrutalism */
+section:not(#home) {
+  box-shadow: 0 -10px 0px rgba(0,0,0,1);
+}
+
+/* --- LOGIKA MARQUEE --- */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-slow {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+ .animate-bounce-slow {
+    animation: bounce 3s infinite;
+  }
+  
+  .animate-ping-slow {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  
+  .animate-pulsate {
+    animation: pulsate 1.5s ease-in-out infinite alternate;
+  }
+  
+  .animate-spin-slow {
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes pulsate {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0.5; transform: scale(1.2); }
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* 1. Ukuran Scrollbar */
+  ::-webkit-scrollbar {
+    width: 16px;
+    background-color: #dfdfdf; /* Warna track dasar */
+    border-left: 4px border-black;
+  }
+
+  /* 2. Track (Latar Belakang Scrollbar) */
+  ::-webkit-scrollbar-track {
+    background-color: #c0c0c0; /* Abu-abu retro khas Win98 */
+    border-left: 4px solid black;
+    box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.8), 
+                inset -2px -2px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 3. Thumb (Bagian yang digeser) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #000000; /* Hitam pekat agar kontras */
+    border: 2px solid #c0c0c0;
+    /* Memberikan efek emboss kaku */
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,1); 
+  }
+
+  /* 4. Hover Effect pada Thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #2563eb; /* Berubah jadi biru saat di-hover */
+    cursor: pointer;
+  }
+
+  /* Untuk Firefox (Dukungan terbatas, hanya warna) */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #000000 #c0c0c0;
+  }
+
+  /* Animasi tambahan untuk Reveal content */
+  main {
+    will-change: transform, opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
