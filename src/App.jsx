@@ -7,7 +7,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import GithubStats from './components/GithubStats';
 import Footer from './components/Footer';
-import Experience from './components/experience';
+import Experience from './components/Experience';
 import SplashScreen from './components/SplashScreen';
 
 function App() {
