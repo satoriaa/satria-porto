@@ -9,6 +9,7 @@ import GithubStats from './components/GithubStats';
 import Footer from './components/Footer';
 import Experience from './components/Experience';
 import SplashScreen from './components/SplashScreen';
+import ChatBot from './components/ChatBot';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -130,6 +131,9 @@ function App() {
           <Footer />
         </footer>
       </main>
+
+      {/* CHATBOT - Floating button & window */}
+      {showContent && <ChatBot />}
 
       <style jsx>{`
         main {
