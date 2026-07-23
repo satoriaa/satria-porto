@@ -33,9 +33,9 @@ const Hero = ({ btnClass, scrollToSection }) => {
   }, [displayText, isDeleting, currentRoleIndex]);
 
   return (
-    <section
+<section
       id="home"
-      className="stack-section z-10 flex flex-col justify-center items-center py-20 px-4 sm:px-6 bg-[#dfdfdf] border-b-8 border-black relative overflow-hidden"
+      className="stack-section flex flex-col justify-center items-center py-20 px-4 sm:px-6 bg-[#dfdfdf] border-b-8 border-black overflow-hidden"
       style={{ "--stack-i": 0 }}
     >
       {/* --- ANIMATED BACKGROUND ELEMENTS --- */}

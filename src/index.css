@@ -15,43 +15,44 @@ html {
   background-color: #dfdfdf;
 }
 
-/* --- KUNCI STACKING SECTION --- */
-/* Agar efek menumpuk lancar, kita pastikan z-index diatur secara dinamis melalui App.jsx atau class manual */
+/* --- KUNCI STACKING SECTION (NIMPA) --- */
+/* Efek menumpuk (stacking) dimana section berikutnya menimpa section sebelumnya saat di-scroll */
 .stack-section {
   /* Pada layar lebar kita gunakan efek stacking (sticky fullscreen).
      Pada layar kecil kita turunkan jadi relative agar konten tidak terpotong. */
-  position: sticky;
-  top: 0;
+  position: sticky !important;
+  top: 0 !important;
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
-  contain: paint;
   background-color: #dfdfdf; /* Pastikan tidak transparan */
   border-bottom: 4px solid black; /* Garis pemisah antar tumpukan */
+  /* Reset z-index yang mungkin di-set oleh utility Tailwind (z-10 dll) */
+  z-index: auto !important;
 }
 
-section {
-  /* Default: sections ambil full viewport pada layar besar untuk efek "stacking".
-     Namun pada perangkat kecil, kita buat relative dan biarkan tinggi mengikuti konten. */
-  min-height: 100vh;
-
-  position: sticky;
-  /* selaraskan dengan tinggi navbar biar tidak perlu klik berkali-kali */
-  top: var(--nav-height, 72px);
-  width: 100%;
-  scroll-margin-top: var(--nav-height, 72px);
-}
+/* Stacking alami: section yang lebih akhir di DOM akan tampil di atas */
+/* Karena mereka semua sticky di top:0, yg paling akhir menimpa yg sebelumnya */
+#home { z-index: 1 !important; }
+#about { z-index: 2 !important; }
+#experience { z-index: 3 !important; }
+#skills { z-index: 4 !important; }
+#projects { z-index: 5 !important; }
+#github { z-index: 6 !important; }
+#contact { z-index: 7 !important; }
 
 /* Layar medium ke bawah: hentikan efek sticky agar tidak terjadi pemotongan konten
    dan biarkan setiap section mengikuti aliran dokumen. */
 @media (max-width: 1024px) {
   .stack-section {
-    position: relative;
+    position: relative !important;
+    top: auto !important;
     min-height: auto;
     overflow: visible;
+    z-index: auto !important;
   }
 
-  section {
+  .stack-section section {
     position: relative;
     top: auto;
     min-height: auto;
@@ -67,35 +68,31 @@ section {
 /* Layar kecil: lebih longgar spacing dan hilangkan overflow dekoratif */
 @media (max-width: 640px) {
   .stack-section {
-    position: relative;
+    position: relative !important;
+    top: auto !important;
     min-height: auto;
     overflow: visible;
   }
 
-  section {
+  .stack-section section {
     position: relative;
     top: auto;
     padding: 1.25rem;
   }
 
-  /* Sembunyikan elemen dekoratif yang memakai ukuran tetap dan dapat memecah layout */
-  /* Sembunyikan elemen dekoratif berukuran sangat besar yang sering memecah layout di layar kecil.
-     Kita target class utilitas Tailwind yang biasanya dipakai di komponen (escaped selector diperlukan). */
+  /* Sembunyikan elemen dekoratif yang memakai ukuran tetap dan dapat memecah layout di layar kecil. */
   .text-\[12rem\], .w-\[400px\], .h-\[400px\], .\-top-20, .\-bottom-20, .\-left-20, .\-right-20 {
     display: none !important;
   }
 }
 
-
-/* Pastikan target scroll tidak ketutup navbar fixed */
-section[id] {
-  scroll-margin-top: var(--nav-height, 72px);
+/* Efek bayangan lebih tegas untuk gaya Neubrutalism */
+.stack-section {
+  box-shadow: 0 -10px 0px rgba(0,0,0,1);
 }
 
-
-/* Efek bayangan lebih tegas untuk gaya Neubrutalism */
-section:not(#home) {
-  box-shadow: 0 -10px 0px rgba(0,0,0,1);
+.stack-section:first-of-type {
+  box-shadow: none;
 }
 
 /* --- LOGIKA MARQUEE --- */

@@ -13,7 +13,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="w-full min-h-screen bg-[#dfdfdf] flex flex-col items-center justify-center py-20 px-6 border-t-8 border-black">
+    <section id="skills" className="stack-section bg-[#dfdfdf] flex flex-col items-center justify-center py-20 px-6">
       
       {/* Title Area */}
       <div className="relative mb-20 text-center">

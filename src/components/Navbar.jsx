@@ -10,7 +10,7 @@ const Navbar = ({ scrollToSection }) => {
 
     // Deteksi scroll yang lebih aman untuk arah atas maupun bawah
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'experience', 'skills', 'projects', 'github', 'contact'];
 
       // Ambil titik tengah layar atau sedikit di atasnya sebagai jangkar akurat
       const triggerPoint = window.innerHeight * 0.3;
