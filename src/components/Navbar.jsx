@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import translations from '../data/translations';
 
 const Navbar = ({ scrollToSection }) => {
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language].navbar;
   const [time, setTime] = useState(new Date());
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,12 +67,12 @@ const Navbar = ({ scrollToSection }) => {
   `;
 
   const navItems = [
-    { id: 'about', label: 'About.txt' },
-    { id: 'experience', label: 'Experience.' },
-    { id: 'skills', label: 'Modules.sys' },
-    { id: 'projects', label: 'Works.exe' },
-    { id: 'github', label: 'GitHub.dll' },
-    { id: 'contact', label: 'Link.lnk' },
+    { id: 'about', label: t.about },
+    { id: 'experience', label: t.experience },
+    { id: 'skills', label: t.skills },
+    { id: 'projects', label: t.projects },
+    { id: 'github', label: t.github },
+    { id: 'contact', label: t.contact },
   ];
 
   const handleNavClick = (e, id) => {
@@ -101,7 +105,7 @@ const Navbar = ({ scrollToSection }) => {
             <div className="w-2 h-2 bg-[#5555ff]"></div>
             <div className="w-2 h-2 bg-[#ffff55]"></div>
           </div>
-          <span className="font-black text-[12px] italic tracking-tighter">START</span>
+          <span className="font-black text-[12px] italic tracking-tighter">{t.start}</span>
         </button>
 
         {/* Hamburger (mobile) */}
@@ -122,11 +126,11 @@ const Navbar = ({ scrollToSection }) => {
 
         <div className="hidden lg:flex flex-col">
           <h1 className="font-black text-[10px] text-blue-900 tracking-tighter uppercase italic leading-none">
-            MUHAMMAD_SATRIA_RIZKY
+            {t.userName}
           </h1>
           <div className="flex items-center gap-1">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            <span className="text-[8px] font-bold text-gray-600 uppercase">Status: Online</span>
+            <span className="text-[8px] font-bold text-gray-600 uppercase">{t.status}</span>
           </div>
         </div>
       </div>
@@ -162,6 +166,16 @@ const Navbar = ({ scrollToSection }) => {
 
       {/* KANAN: ENHANCED SYSTEM TRAY (desktop) */}
       <div className="hidden md:flex items-center gap-4 border-2 border-gray-600 bg-[#c0c0c0] px-4 py-2 shadow-[inset_2px_2px_0px_rgba(0,0,0,0.5),1px_1px_0px_rgba(255,255,255,1)] ml-4">
+        {/* LANGUAGE TOGGLE */}
+        <button
+          onClick={toggleLanguage}
+          className="flex flex-col items-center justify-center px-2 py-1 border-2 border-black bg-[#c0c0c0] shadow-[inset_1px_1px_0px_rgba(255,255,255,1),1px_1px_0px_rgba(0,0,0,1)] hover:bg-yellow-400 hover:text-black active:shadow-[inset_2px_2px_0px_rgba(0,0,0,1)] transition-all cursor-pointer group/lang relative"
+          title={t.langLabel}
+        >
+          <span className="text-[10px] font-black leading-none">{t.langToggle}</span>
+          <span className="text-[5px] font-bold uppercase tracking-tight">{t.langLabel}</span>
+        </button>
+
         <div className="flex gap-3 items-center border-r-2 border-gray-400 pr-3">
           <div className="flex flex-col gap-[2px]">
             <div className="flex gap-[1px]">
@@ -169,7 +183,7 @@ const Navbar = ({ scrollToSection }) => {
               <div className="w-1.5 h-3 bg-green-500"></div>
               <div className="w-1.5 h-3 bg-gray-400"></div>
             </div>
-            <span className="text-[6px] font-black leading-none">CPU</span>
+            <span className="text-[6px] font-black leading-none">{t.cpu}</span>
           </div>
 
           <div className="relative">
