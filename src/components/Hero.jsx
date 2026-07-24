@@ -84,7 +84,7 @@ const Hero = ({ btnClass, scrollToSection }) => {
           </div>
 
           {/* TYPING AREA WITH HOVER SCALE */}
-          <div className="h-[160px] sm:h-[190px] md:h-[240px] flex items-center group/text transition-transform duration-300 hover:scale-[1.02]">
+          <div className="h-[160px] sm:h-[190px] md:h-[220px] flex items-center group/text transition-transform duration-300 hover:scale-[1.02]">
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase leading-[1.1] italic tracking-tighter w-full">
               <span className="bg-yellow-400 px-3 py-2 border-4 border-black inline-block shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] group-hover/text:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] relative whitespace-pre-line transition-all">
                 {displayText}
@@ -107,12 +107,19 @@ const Hero = ({ btnClass, scrollToSection }) => {
             >
               <span className="group-hover:animate-spin">⚙️</span> INITIALIZE_WORKS.EXE
             </a>
+            <a
+              href="/cv.pdf"
+              download
+              className={`${btnClass} text-base sm:text-lg px-6 sm:px-8 py-3 bg-blue-700 text-white hover:bg-black hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.5)] transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] flex items-center gap-3`}
+            >
+              <span>📄</span> DOWNLOAD_CV.EXE
+            </a>
           </div>
         </div>
 
         {/* RIGHT PANEL: IMAGE WITH ENHANCED INTERACTION */}
-        <div className="md:col-span-5 flex flex-col relative z-10 group/img">
-          <div className="bg-gradient-to-r from-[#000080] to-[#1084d0] text-white text-[11px] px-3 py-1.5 flex justify-between items-center font-bold mb-1 border-b-2 border-black relative z-20">
+        <div className="md:col-span-5 flex flex-col h-full relative z-10 group/img">
+        <div className="bg-gradient-to-r from-[#000080] to-[#1084d0] text-white text-[11px] px-3 py-1.5 flex justify-between items-center font-bold mb-1 border-b-2 border-black relative z-20">
             <span className="group-hover/img:animate-pulse">Identity_Check.jpg</span>
             <div className="flex gap-1">
               <div className="w-3 h-3 bg-[#c0c0c0] border border-gray-600 shadow-[inset_-1px_-1px_white] group-hover/img:bg-red-500 transition-colors"></div>
@@ -121,8 +128,8 @@ const Hero = ({ btnClass, scrollToSection }) => {
           </div>
 
           {/* Ensure the image container keeps a sensible min-height across breakpoints so the image doesn't shrink too small */}
-          <div className="w-full border-2 border-black overflow-hidden bg-black relative cursor-crosshair">
-              <div className="w-full min-h-48 sm:min-h-64 md:min-h-80 lg:min-h-96 overflow-hidden">
+          <div className="w-full flex-1 border-2 border-black overflow-hidden bg-black relative cursor-crosshair flex flex-col">
+            <div className="w-full h-full min-h-[300px] md:min-h-0 flex-1 overflow-hidden">
               <img
                 src={profilSatria}
                 alt="Satria Rizky"

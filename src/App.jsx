@@ -93,11 +93,9 @@ function App() {
         <Projects btnClass={btnClass} />
         <GithubStats />
         <Contact />
-        
-        <footer id="footer">
-          <Footer />
-        </footer>
       </main>
+
+      <Footer />
 
       {showContent && <ChatBot />}
 
