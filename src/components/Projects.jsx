@@ -12,7 +12,7 @@ const Projects = () => {
       status: t.project1.status,
       desc: t.project1.desc,
       tech: t.project1.tech,
-      link: "https://uts-softdev.vercel.app",
+      link: "https://github.com/satoriaa/uts-softdev",
       color: "group-hover:bg-blue-600"
     },
     {
@@ -30,7 +30,7 @@ const Projects = () => {
       status: t.project3.status,
       desc: t.project3.desc,
       tech: t.project3.tech,
-      link: "https://uastest-z4b6.vercel.app/",
+      link: "https://github.com/alvintnw/UAS_FrontEndProgramming",
       color: "group-hover:bg-green-600"
     }
   ];

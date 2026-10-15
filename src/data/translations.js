@@ -124,11 +124,11 @@ const translations = {
         tech: ["React.js", "Mongoose", "Tailwind", "Node.js"],
       },
       project2: {
-        title: "Calculator",
-        category: "WEB_APP",
+        title: "RupiX",
+        category: "MOBILE_APP",
         status: "COMPLETED",
-        desc: "Calculator berbasis web dengan tema clean dan logika yang efisien.",
-        tech: ["JavaScript", "HTML", "CSS"],
+        desc: "Digital wallet mutakhir dengan antarmuka bersih dan sistem pembayaran biometrik terintegrasi.",
+        tech: ["Flutter", "Dart", "C++"],
       },
       project3: {
         title: "SABANA FRIED CHICKEN WEB",
@@ -216,7 +216,7 @@ const translations = {
       chatMe: "Chat_Me!",
       windowTitle: "SatBot_AI.exe",
       faqAnswers: {
-        skills: "Saya menguasai React & Next.js untuk frontend, Node.js & Express untuk backend, MongoDB (Mongoose) untuk database, dan Python untuk data analysis. Juga familiar dengan Tailwind CSS, Git, dan Mermaid untuk diagram sistem.",
+        skills: "Saya menguasai Vanilla web(javascript, css, dan html), Bootsrap, React & Next.js untuk frontend,Laravel, Node.js & Express untuk backend, MongoDB (Mongoose) untuk database, dan Python untuk data analysis. Juga familiar dengan Tailwind CSS, Git, dan Mermaid untuk diagram sistem.",
         experience: "Beberapa proyek yang sudah saya kerjakan antara lain Lost & Found FTI (aplikasi barang hilang berbasis web), sistem penelitian analisis data, dan berbagai proyek portfolio. Detail lengkapnya ada di bagian Works.exe di website ini!",
         contact: "Kamu bisa menghubungi saya melalui form pesan di bagian Contact (Link.lnk) website ini, atau DM langsung ke Instagram @str_rzy, atau email ke muhanmadsatriarizky@gmail.com. Semua link tersedia di panel kiri bagian Contact!",
         education: "Saat ini saya sedang dalam tahap akhir (Final Year) sebagai mahasiswa Teknik Informatika di Universitas Tarumanagara (UNTAR), Fakultas Teknologi Informasi (FTI).",
@@ -374,11 +374,11 @@ const translations = {
         tech: ["React.js", "Mongoose", "Tailwind", "Node.js"],
       },
       project2: {
-        title: "Calculator",
-        category: "WEB_APP",
+        title: "RupiX",
+        category: "MOBILE_APP",
         status: "COMPLETED",
-        desc: "A web-based calculator with a clean theme and efficient logic.",
-        tech: ["JavaScript", "HTML", "CSS"],
+        desc: "An advanced digital wallet with a clean interface and integrated biometric payment system.",
+        tech: ["Flutter", "Dart", "C++"],
       },
       project3: {
         title: "SABANA FRIED CHICKEN WEB",
