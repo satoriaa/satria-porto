@@ -21,7 +21,7 @@ const Projects = () => {
       status: t.project2.status,
       desc: t.project2.desc,
       tech: t.project2.tech,
-      link: "https://clean-calc-web.vercel.app/",
+      link: "https://github.com/RustyRustacle/RUPIX",
       color: "group-hover:bg-purple-600"
     },
     {
